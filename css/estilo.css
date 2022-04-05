@@ -25,16 +25,38 @@ body{
     gap:34px;
     height:500px;
 }
-.content div{
-    background-color: blue;
-    width:117px;
+.content img{
+    width:100%;
+}
+.card {
+    width: 117px;
     height: 146px;
-}
-.card{
+    position: relative;
+  }
 
-}
-.front-face{
-    width:50px;
-    height:50px;
-    background-color: red;
-}
+  .face {
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+  }
+
+  .back-face {
+    transform: rotateY(180deg);
+  }
+
+  .card:hover .back-face {
+    transform: rotateY(0deg);
+  }
+
+  .card:hover .front-face {
+    transform: rotateY(-180deg);
+  }
