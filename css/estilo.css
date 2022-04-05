@@ -1,0 +1,32 @@
+body{
+    background-color: #EEF9BF;
+}
+.title{
+    justify-content: center;
+    width: auto;
+    text-align: center;
+    margin: 40px;
+}
+.title h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    color: #75B79E;
+}
+.content{
+    justify-content: space-around;
+    width: auto;
+    display:grid;
+    grid-template: auto auto / none;
+    grid-auto-flow: column;
+    gap:34px;
+    height:500px;
+}
+.content div{
+    background-color: blue;
+    width:117px;
+    height: 146px;
+}
