@@ -57,26 +57,28 @@ function initializeParrots(){
 
 function turnCard(selectedCard){
     //turned vira as cartas e as marca para serem comparadas
-    if(selectedCard.classList.contains("turned")==false){
+    //se mais de duas cartas estiverem selecionadas, nada acontece
+    if((selectedCard.classList.contains("turned")==false)&&(turnedCards<2)){
         selectedCard.classList.add("turned");
         turnedCards++;
         moves++;
-    }
+    
 
-    //este if compara as duas cartas marcadas
-    if(turnedCards>=2){
-        //selected pair é as duas cartas atualmente selecionadas
-        let selectedPair= document.querySelectorAll(".turned");
+        //este if compara as duas cartas marcadas
+        if(turnedCards==2){
+            //selected pair é as duas cartas atualmente selecionadas
+            let selectedPair= document.querySelectorAll(".turned");
 
-        //checa se as duas cartas são iguais
-        cardIDs=document.querySelectorAll(".turned span");
-        if(cardIDs[0].innerHTML==cardIDs[1].innerHTML){
-            selectedPair.forEach(confirmCard);
+            //checa se as duas cartas são iguais
+            cardIDs=document.querySelectorAll(".turned span");
+            if(cardIDs[0].innerHTML==cardIDs[1].innerHTML){
+                selectedPair.forEach(confirmCard);
+            }
+            else{
+                setTimeout(function() {selectedPair.forEach(unturn)}, 1000);
+            }
+            turnedCards=0;
         }
-        else{
-             setTimeout(function() {selectedPair.forEach(unturn)}, 1000);
-        }
-        turnedCards=0;
     }
 
 
