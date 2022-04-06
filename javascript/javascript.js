@@ -77,15 +77,13 @@ function turnCard(selectedCard){
             else{
                 setTimeout(function() {selectedPair.forEach(unturn)}, 1000);
             }
-            turnedCards=0;
         }
     }
-
-
-
 }
+
 function unturn(card){
     card.classList.remove("turned");
+    turnedCards=0;
 }
 
 //esta função é chamada quando duas cartas são iguais, as faz permanecer viradas para cima e checa se o jogo acabou
@@ -94,6 +92,7 @@ function confirmCard(card){
     card.classList.remove("turned");
     card.removeAttribute("onclick");
     confirmedCards++;
+    turnedCards=0;
 
     if(confirmedCards==cardAmount){
         setTimeout(function() { alert(`Você ganhou em ${moves} jogadas! E em ${gameTime} segundos!`)}, 500);
