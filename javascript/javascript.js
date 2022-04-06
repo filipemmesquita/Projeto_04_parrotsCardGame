@@ -1,5 +1,6 @@
 let cardAmount =0;
 const cards=[];
+let turnedCards =0;
 function initializeParrots(){
     cardAmount = prompt("Com quantas cartas quer jogar? escolha um número par entre 4 e 14")
     //checagem para ver se o numero é valido
@@ -26,10 +27,27 @@ function initializeParrots(){
     for(i=0;i<cardAmount;i++){
     newCard =document.createElement("div");
         newCard.classList.add("card");
-        newCard.innerHTML=`<div class="front-face face"><img src="img/front.png" /></div><div class="back-face face"><img src="img/${cards[i]}.gif" /></div>`;
+        newCard.setAttribute("onclick","turnCard(this)" )
+        newCard.innerHTML=`<div class="front-face face"><img src="img/front.png" /></div>
+        <span>${cards[i]}</span>
+        <div class="back-face face"><img src="img/${cards[i]}.gif" /></div>`;
         document.querySelector(".content").appendChild(newCard);
-        console.log(i);
-        console.log(newCard);
+
 
     }
+}
+
+function turnCard(selectedCard){
+    selectedCard.classList.add("turned");
+    turnedCards++
+    if(turnedCards==2){
+        let turnedCards= document.querySelectorAll(".turned");
+        //turnedCards.forEach(unturn);
+        setTimeout(function() {turnedCards.forEach(unturn)}, 2000);
+        turnCards=0;
+    }
+
+}
+function unturn(card){
+    card.classList.remove("turned");
 }

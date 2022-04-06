@@ -37,6 +37,9 @@ body{
     box-sizing: border-box;
     border-radius: 5px;
   }
+  .card span{
+    display:none;
+  }
 
   .face {
     width: 100%;
@@ -57,10 +60,10 @@ body{
     transform: rotateY(180deg);
   }
 
-  .card:hover .back-face {
+  .turned .back-face {
     transform: rotateY(0deg);
   }
 
-  .card:hover .front-face {
+  .turned .front-face {
     transform: rotateY(-180deg);
   }
