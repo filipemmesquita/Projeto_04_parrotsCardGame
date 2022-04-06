@@ -32,6 +32,10 @@ body{
     width: 117px;
     height: 146px;
     position: relative;
+    background: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-sizing: border-box;
+    border-radius: 5px;
   }
 
   .face {

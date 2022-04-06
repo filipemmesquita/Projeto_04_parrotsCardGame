@@ -26,7 +26,7 @@ function initializeParrots(){
     for(i=0;i<cardAmount;i++){
     newCard =document.createElement("div");
         newCard.classList.add("card");
-        newCard.innerHTML=`<div class="front-face face"><img src="img/front.png" /></div><div class="back-face face><img src="${cards[i]}.gif" /></div>`;
+        newCard.innerHTML=`<div class="front-face face"><img src="img/front.png" /></div><div class="back-face face"><img src="img/${cards[i]}.gif" /></div>`;
         document.querySelector(".content").appendChild(newCard);
         console.log(i);
         console.log(newCard);
