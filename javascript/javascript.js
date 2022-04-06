@@ -3,19 +3,26 @@ const cards=[];
 let turnedCards =0;
 let moves=0;
 let confirmedCards=0;
+let gameTime=0;
+let timer;
 function initializeParrots(){
-    cardAmount = prompt("Com quantas cartas quer jogar? escolha um número par entre 4 e 14")
+    cardAmount =0;
+    cards.splice(0, cards.length)
+    turnedCards =0;
+    moves=0;
+    confirmedCards=0;
+    gameTime=0;
+    cardAmount = prompt("Com quantas cartas quer jogar? escolha um número par entre 4 e 14");
     //checagem para ver se o numero é valido
-    while((cardAmount%2!=0)||(cardAmount<4)||(cardAmount>14)||(Number.isNaN(cardAmount)))
-    {
+    while((cardAmount%2!=0)||(cardAmount<4)||(cardAmount>14)||(Number.isNaN(cardAmount))){
         cardAmount=prompt("Valor inválido! Por favor escolha um número de cartas par entre 4 e 14!")
     }
     //este contador extra serve para garantir que o array cards estará preenchido com pares de numeros
     let x=0;
     for(let i=0;i<cardAmount;i+=2){
-    cards[i]=x;
-    cards[i+1]=x;
-    x++;
+        cards[i]=x;
+        cards[i+1]=x;
+        x++;
     }
     //agora para randomizar o array cards
     cards.sort(comparador); 
@@ -23,7 +30,15 @@ function initializeParrots(){
 
     // Esta função randomiza um array
     function comparador() { 
-	return Math.random() - 0.5; 
+	    return Math.random() - 0.5;     
+    }
+
+    let clockFace=document.querySelector(".clockFace");
+
+    timer=setInterval(function () {tickClock(clockFace)}, 1000);
+    function tickClock(clock) {
+        gameTime++;
+        clock.innerText = gameTime;
     }
 
     for(i=0;i<cardAmount;i++){
@@ -43,9 +58,9 @@ function initializeParrots(){
 function turnCard(selectedCard){
     //turned vira as cartas e as marca para serem comparadas
     if(selectedCard.classList.contains("turned")==false){
-    selectedCard.classList.add("turned");
-    turnedCards++;
-    moves++;
+        selectedCard.classList.add("turned");
+        turnedCards++;
+        moves++;
     }
 
     //este if compara as duas cartas marcadas
@@ -79,7 +94,29 @@ function confirmCard(card){
     confirmedCards++;
 
     if(confirmedCards==cardAmount){
-        setTimeout(function() { alert(`Você ganhou em ${moves} jogadas!`)}, 500);
+        setTimeout(function() { alert(`Você ganhou em ${moves} jogadas! E em ${gameTime} segundos!`)}, 500);
+        setTimeout(playAgain, 600);
+        clearInterval(timer);
+        function playAgain(){
+            let playAgainInput="";
+            while((playAgainInput!="sim")&&(playAgainInput!="não")&&(playAgainInput!="nao")){
+                playAgainInput = prompt("Quer jogar novamente? sim/não");
+                
+                if(playAgainInput=="sim"){
+
+                    document.querySelector(".content").innerHTML="";
+                    initializeParrots();         
+
+                }
+                else if((playAgainInput=="não")||(playAgainInput=="nao")){
+                    alert("Okay")
+                }
+                else{
+                    alert("Não entendi sua resposta!")
+                }
+            }
+        }
+
     }
 
 }
