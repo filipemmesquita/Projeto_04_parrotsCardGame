@@ -38,16 +38,28 @@ function initializeParrots(){
 }
 
 function turnCard(selectedCard){
+    //turned vira as cartas e as marca para serem comparadas
     selectedCard.classList.add("turned");
     turnedCards++
-    if(turnedCards==2){
-        let turnedCards= document.querySelectorAll(".turned");
-        //turnedCards.forEach(unturn);
-        setTimeout(function() {turnedCards.forEach(unturn)}, 2000);
-        turnCards=0;
+    if(turnedCards>=2){
+        //selected pair é as duas cartas atualmente selecionadas
+        let selectedPair= document.querySelectorAll(".turned");
+        cardIDs=document.querySelectorAll(".turned span");
+        if(cardIDs[0].innerHTML==cardIDs[1].innerHTML){
+            selectedPair.forEach(confirmCard);
+        }
+        else{
+             setTimeout(function() {selectedPair.forEach(unturn)}, 2000);
+        }
+        turnedCards=0;
     }
 
 }
 function unturn(card){
     card.classList.remove("turned");
+}
+function confirmCard(card){
+    card.classList.add("confirmed");
+    card.classList.remove("turned");
+    card.removeAttribute("onclick");
 }

@@ -67,3 +67,10 @@ body{
   .turned .front-face {
     transform: rotateY(-180deg);
   }
+  .confirmed .back-face {
+    transform: rotateY(0deg);
+  }
+
+  .confirmed .front-face {
+    transform: rotateY(-180deg);
+  }
