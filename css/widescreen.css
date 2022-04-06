@@ -1,0 +1,8 @@
+.content{
+    grid-template: auto auto / none;
+    grid-auto-flow: column;
+}
+.title h1{
+    font-size: 56px;
+    line-height: 66px;
+}

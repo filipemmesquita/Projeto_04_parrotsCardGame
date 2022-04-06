@@ -1,0 +1,8 @@
+.content{
+    grid-template: none / auto;
+}
+.title h1{
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+}

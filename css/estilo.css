@@ -11,8 +11,6 @@ body{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 56px;
-    line-height: 66px;
     letter-spacing: -0.004em;
     color: #75B79E;
 }
@@ -20,10 +18,7 @@ body{
     justify-content: space-around;
     width: auto;
     display:grid;
-    grid-template: auto auto / none;
-    grid-auto-flow: column;
     gap:34px;
-    height:500px;
 }
 .content img{
     width:100%;
